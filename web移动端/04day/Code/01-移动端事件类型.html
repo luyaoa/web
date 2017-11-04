@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>移动端事件类型</title>
+  <style>
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: #F7F7F7;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      background-color: #CCC;
+    }
+
+    li {
+      height: 30px;
+      line-height: 30px;
+      padding: 0 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      margin: 10px auto;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="start"></li>
+    <li class="move"></li>
+    <li class="end"></li>
+  </ul>
+
+  <div class="box"></div>
+  <script>
+    // 获取box 且给box添加事件
+    var box = document.querySelector(".box");
+
+    // 获取显示结果的三个li
+    var start = document.querySelector('.start');
+    var move = document.querySelector('.move');
+    var end = document.querySelector('.end');
+
+    var colors = ['red', 'blue', 'green'];
+    var key = 0;
+
+    // 当手指刚触摸到屏幕上 就会触发一个事件 -- touchstart
+    box.addEventListener('touchstart', function () {
+      start.innerHTML = 'start';
+      end.innerHTML = '';
+    })
+
+    // 当手指开始在元素上移动的时候 会触发一个事件 -- touchmove
+    box.addEventListener('touchmove', function(){
+      move.innerHTML = 'moving';
+      start.innerHTML = '';
+
+      // 在手指一动的过程中,给move这个元素设置不同的颜色
+      move.style.backgroundColor = colors[++key % colors.length];
+    })
+
+    // 当手指离开屏幕的时候 会触发一个事件 -- touchend
+    box.addEventListener('touchend', function(){
+      end.innerHTML = 'end';
+      start.innerHTML = '';
+      move.style.backgroundColor = '';
+      move.innerHTML = "";
+    })
+  </script>
+</body>
+
+</html>

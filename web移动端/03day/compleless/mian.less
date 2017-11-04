@@ -1,0 +1,162 @@
+//这是单行注释  也是静默注释 就是用户在页面看不见 是给开发人员看的
+/*多行注释  给用户或别人看的*/
+
+// 变量
+// 格式 @变量名 : value;
+@gray:#ccc;
+@fint-size: 16px;
+
+// main{
+//     color: @gray;
+//     font-size: @fint-size;
+// }
+
+// 嵌套规则
+// css尽量不要超过三层
+// .container h1 {
+//   font-size: 25px;
+//   color: #E45456;
+// }
+
+// .container p {
+//   font-size: 25px;
+//   color: #3C7949;
+// }
+
+// .container .myclass h1 {
+//   font-size: 25px;
+//   color: #E45456;
+// }
+// .container .myclass p {
+//   font-size: 25px;
+//   color: #3C7949;
+// }
+// 嵌套写法
+  /*例子*/
+// .container{
+//     h1{
+//         font-size: 25px;
+//         color: #E45456;
+//     }
+//     p{
+//         font-size: 25px;
+//         color: #3C7949;  
+//     }
+//     .myclass{
+//         h1{
+//             font-size: 25px;
+//             color: #E45456; 
+//         }
+//         p{
+//             font-size: 25px;
+//             color: #3C7949; 
+//         }
+//     }
+// }
+
+
+// 父选择器
+// &代表父级
+// &:
+
+/*例子*/
+// a {
+//   color:yellowgreen;
+// }
+// a:link {  
+//   color: black;  
+// }  
+// a:visited {  
+//   color:blue;  
+// }  
+// a:hover {  
+//   color: orange;  
+// }  
+// a:active {  
+//   color: pink;  
+// }  
+
+
+// a{
+//   color: pink;
+//   &:link{
+//       color: hotpink;
+//   }
+//   &:visited {  
+//     color:blue;  
+//   }
+//   &:hover {  
+//     color: orange;  
+//   }  
+//   &:active {  
+//     color: pink;  
+//   } 
+
+
+
+  // 直接子元素
+// >
+//  >a
+
+//   > b{
+//     color: black;
+//   }
+// }
+
+
+
+
+
+// 四则运算
+// 就是根据数字进行加减乘除
+
+    // .box{
+    //     font-size: @fint-size + 5;  
+    // }
+
+
+// 混合器 类似于函数
+// 格式： .混合器名(参数){}
+// 有无参和有参混合器  无参就是写死的
+//  有参就是可以改变的并且有参必须传参 不然就写上默认值 
+
+// 传参 就是先定义函数再写方法 最后调用
+// 
+
+
+
+
+// 引用的时候最好在最上面引用  
+// 最好函数
+
+// 继承（少用）
+//  当一个元素最多有一两句代码不一样的时候再用
+// 格式： &:extent(选择器)
+
+
+
+
+// 媒体查询
+// 是css3中一个强大的工具 包含媒体类型 以及 零或多个检查特定媒体特征条件的表达式
+//    rem布局会用到  响应式
+
+// 媒体的特性
+ /*  视口里面
+    width hight  指的是layout viewport 的大小
+  
+    max-width  max-height 最大宽最大高
+
+    device-width deice-height 
+
+    orientation:portrait (竖屏) /  land
+    
+
+ */
+
+/*
+    css中样式应用于
+      显示器 screen
+      打印   print
+
+
+*/

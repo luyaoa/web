@@ -1,0 +1,618 @@
+html,body{
+    width: 100%;
+    position: relative;
+
+}
+.jdm{
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+/* 顶部搜索 */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #c91523;
+    z-index: 10;
+}
+/* logo */
+header .jdm-logo{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 56px;
+    height: 21px;
+    background-image: url("../image/jd-sprites.png");
+    background-position: 0 -109px;
+    background-size: 200px 200px;
+
+}
+/* 搜索框 */
+header .search-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-left: 75px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    /* 解决盒子塌陷问题  padding+border+内容宽高*/
+}
+header .search-box input{
+
+    width: 100%;
+    height: 30px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 15px;
+    padding-left: 30px;
+}
+     /* 搜索图标 */
+
+header .search-box .icon-search{
+    position: absolute;
+    top: 5px;
+    left: 80px;
+    width: 20px;
+    height: 30px;
+    background-image: url("../image/jd-sprites.png");
+    background-position: -59px -104px;
+    background-size: 200px 200px;
+     /*尺寸这里写死了不应该写死的等后面学到iem就知道了
+      给的图是精灵图是二倍图 但是在不同尺寸的浏览器上回等比例缩放
+      这里我们要学的是375px宽的 要想将图片不失真的大小刚好的显示出来
+      所以这里要将图缩小一倍
+     */
+}
+    /* 登录 */
+header .jdm-login{
+    position: absolute;
+    top: 0px;
+    right: 10px;   
+    line-height: 40px;
+    display: block;
+    font-size: 16px;
+    color: #fff;
+}
+
+/* 主题部分 */
+main{
+    width: 100%;
+    margin-bottom: 280px;
+}
+
+
+/* 轮播图 */
+.carousel{
+    width: 100%;
+}
+.carousel li img{
+    width: 100%;
+}
+/* 导航栏 */
+.nav{
+  width: 100%;
+  padding-top: 10px;
+  background-color: #fff;  
+}
+.nav ul{
+    width: 100%;
+    overflow: hidden;
+}
+.nav li{
+    float: left;
+    width: 25%;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.nav a{
+    width: 100%;
+    display: block;
+    
+}
+.nav img{
+    width: 40px;
+    height: 40px;
+}
+.nav span{
+    display: block;
+    margin-top: 5px;
+}
+
+/* 秒杀 */
+.seckill{
+    width: 100%;
+    height: auto;
+    padding: 0 8px;
+    background-color: #fff;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+.seckill .seckill-top{
+    width: 100%;
+    line-height: 1;
+    padding: 10px 0;
+    overflow: hidden;
+}
+.seckill .seckill-top h2{
+    position: relative;
+    margin-left: 22px;
+    float: left;
+    color: #c91523;
+    font-size: 14px;
+    font-weight: normal;
+}
+.seckill .seckill-top h2::before{
+    content: "";
+    position: absolute;
+    top:-8px;
+    left: -22px;
+    width: 20px;
+    height: 26px;
+    background-image: url("../image/jd-sprites.png");    
+    background-size: 200px 200px;
+    background-position: -84px -107px;
+}
+.seckill .seckill-time{
+    float: left;
+    margin-left: 10px;
+}
+.seckill .seckill-time span{
+    display: block;
+    float: left;
+    font-size: 13px;
+    background-color: #000;
+    color: #fff;
+    padding-top: 1px;
+}
+.seckill .seckill-time span:nth-child(3n){
+    background-color: #fff;
+    color: #000;
+    margin: 0 2px;/* 冒号间隔 */
+    
+}
+.seckill .seckill-time span:nth-child(3n+1){
+    padding-left: 2px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+/* 2 5 8 */
+.seckill .seckill-time span:nth-child(3n+2){
+    padding-right: 2px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.seckill .seckill-more{
+    position: relative;
+    top: 3px;
+    float: right;
+    margin-right: 10px;
+    font-size: 12px;
+    line-height: 15px;
+   
+}
+.seckill .seckill-more::after{
+    content: "";
+    position: absolute;
+    top: 1px;
+    right: -10px;
+    width: 7px;
+    height: 12px;
+    background-image: url("../image/jd-sprites.png");    
+    background-size: 200px 200px;
+    background-position: -186px -51px;
+}
+.seckill .seckill-bottom{
+    width: 100%;
+    margin-top: 10px;
+}
+.seckill .seckill-bottom ul{
+    width: 100%;
+    overflow: hidden;
+}
+.seckill .seckill-bottom li{
+    float: left;
+    width: 33.333333%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.seckill .seckill-bottom a{
+    position: relative;
+    display: block;
+    width: 100%;
+
+}
+.seckill .seckill-bottom img{
+    width: 100%;
+    vertical-align: middle;
+}
+.seckill .seckill-bottom b{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: orange;
+    padding: 4px 5px;
+    line-height: 1;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+}
+.seckill .seckill-bottom .price{
+    width: 100%;
+}
+.seckill .seckill-bottom .price span{
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.seckill .seckill-bottom .price span.new-price{
+    color: #c91523;
+}
+.seckill .seckill-bottom .price span.old-price{
+    font-size: 12px;
+    margin: 5px 0;
+    margin-bottom: 10px;
+    text-decoration: line-through;
+}
+/* 会场 */
+.meeting {
+    position: relative;
+    width: 100%;
+   
+    
+}
+.meeting img{
+    width: 100%;
+    /* 著名的3pxbug */
+    vertical-align: middle;
+}
+.meeting ul{
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0 8px;
+    
+  
+}
+.meeting li{
+    float: left;
+    width: 50%;
+}
+
+
+
+/* 热卖 */
+.hotsale{
+    width: 100%;
+}
+.hotsale ul{
+    width: 100%; 
+}
+.hotsale li{
+    width: 100%;
+    overflow: hidden;
+}
+.hotsale li a{
+    float: left;
+    display: block;
+    width: 50%;
+}
+.hotsale li img{
+    width: 100%;
+    vertical-align: middle;
+}
+.hotsale li:nth-child(1) a{
+    width: 33.3333%;
+}
+/* 广告 */
+.advert{
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.advert img{
+    width: 100%;
+}
+
+/* 超市 */ /* 主题街 */
+    
+.mark,theme{
+    width: 100%;
+    background-color: #fff;
+    
+}
+.mark h2,.theme h2{
+    line-height: 34px;
+    color: #c91523;
+    font-size: 16px;
+    padding-left: 8px;
+    box-sizing: border-box;
+    
+}
+/* 方法一 */
+/* .mark ul{
+    width: 100%;
+}
+.mark li{
+    width: 100%;
+    overflow: hidden;
+}
+.mark li img{
+    width: 100%;
+}
+.mark li a{
+    width: 50%;
+    float: left;
+} */
+
+    /* 方法二 */
+
+.mark ul{
+    width: 100%;
+}
+.mark li{
+    float: left;
+    width: 50%;
+}
+.mark li img{
+    width: 100%;
+}
+.mark li:nth-child(4){
+    clear: both;
+}
+.mark li a{
+   
+    display: block;
+
+}
+
+/* 主题街 */
+.theme ul{
+    width: 100%;
+
+}
+.theme li{
+    width: 100%;
+    overflow: hidden;   
+}
+.theme li img{
+    width: 100%;
+}
+.theme a{
+    float: left;
+    display: block;
+    width: 25%;
+}
+.theme li:first-child a{
+    float: left;
+    width: 50%;
+}
+.theme li:first-child a:nth-child(3),
+.theme li:first-child a:nth-child(4){
+    width: 25%;
+}
+
+/* 品牌推荐 */
+.brand {
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  .brand ul {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .brand li {
+    width: 30%;
+    float: left;
+  }
+  .brand li img{
+      width: 100%;
+  }
+  .brand li:first-child {
+    width: 40%;
+  }
+  /* 猜你喜欢 */
+.guess {
+    width: 100%;
+   
+    box-sizing: border-box;
+    background-color: #fff;
+  
+  }
+  .guess img{
+      width: 100%;
+  }
+  
+  .guess .guess-top {
+    height: 34px;
+    width:100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+  
+  .guess .guess-top h2 {
+    float: left;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 34px;
+  }
+  
+  .guess .guess-top .guess-login {
+    float: right;
+    line-height: 34px;
+    color:#c91523;
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  .guess .guess-top .guess-login:before {
+    content:'';
+    position: absolute;
+    top: 8px;
+    left: -24px;
+    width: 18px;
+    height: 18px;
+    background-image: url("../image/icon-login.png");
+    background-size: 18px 18px;
+  }
+  
+  .guess .guess-bottom {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .guess .guess-bottom .item {
+    float: left;
+    width: 50%;
+    padding:0 8px;
+    box-sizing: border-box;
+  }
+  
+  .guess .item > a {
+    display: block;
+    width: 100%;
+  }
+  
+  .guess .item p {
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 13px;
+    line-height: 20px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  
+  .guess .item .price {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    margin-top: 6px;
+    padding-top: 8px;
+  }
+  
+  .guess .item .price span  {
+    color:#c91523;
+    font-size: 13px;
+    line-height: 22px;
+  }
+  
+  .guess .item .see-like {
+    float: right;
+    color: #ccc;
+    border:1px solid #ccc;
+    padding: 2px;
+    border-radius: 3px;
+  }
+
+
+
+  /* 内容底部 */
+   .more{
+      width: 100%;
+      height: 32px;
+      line-height: 32px;
+      font-size: 14px;
+      text-align: center;
+      background-color: #f3f5f7;
+      border-top: 1px solid #DEDEDE;
+      border-bottom: 1px solid #DEDEDE;
+  }
+
+.footer{
+    width: 100%;
+    /* height: 50px; */
+   
+    
+}
+.footer .sign{ 
+    height: 60px;
+    padding-left: 50px;
+    border-bottom: 1px solid #DEDEDE;
+}
+ .footer  a{
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    padding:  0 11px;
+    margin-top: 20px; 
+   border-right: 1px solid #848689; 
+   
+ }
+.sign a:last-child {
+    border: none;
+}  
+
+.footer .ft-nav{
+    width: 100%;
+    height: 76px;
+    border-bottom: 1px solid #DEDEDE;
+}
+.footer .ft-nav ul{
+    width: 100%;
+    height: 100%;
+
+}
+ .ft-nav li{
+    width: 33.333%;
+    height: 100%;
+    float: left;
+    background-color: url("../image/jd-sprites.png");
+    background-repeat: no-repeat;
+    /* border: 1px solid #000; */
+}
+ .ft-nav li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+   
+    /* background-position: 0px 0px; */
+}
+
+
+
+
+
+/* 底部工具栏  2种*/
+/* 1.普通 */
+aside{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    background-color: #fff;
+    margin-top: 100px;
+}
+aside ul{
+    width: 100%;
+    height: 100%;
+}
+aside ul li{
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+aside li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+aside li img{
+    height: 44px;
+    width: auto;
+    /* 宽随高自适应 */
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微金所的tab栏</title>
+    <link rel="stylesheet" href="./lib/css/bootstrap.css">
+    <style>
+        .item{
+            width: 100%;
+            height: 190px;
+            padding-right: 80px;
+            background-color: #f8f8f8;
+            position: relative;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0 , 0, 0, 0.8);
+
+        }
+        .item .item-left{
+            width: 100%;
+            height: 100%;
+            padding: 15px;
+
+        }
+        .item .item-right{
+            position: absolute;
+            top: 0;
+            right:0;
+            width: 80px;
+            height: 100%;
+            border-left: 1px dashed #333;
+
+        }
+        .item .item-right:before,.item .item-right:after{
+            content: "";
+            position: absolute;
+            
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+            border-radius: 50%;
+           
+
+        }
+        .item .item-right:before{
+            top: -8px; 
+            box-shadow: 0 2px 1px 0px #fff;
+        }
+        .item .item-right:after{
+            bottom: -8px;
+            box-shadow: 0 -2px 1px 0px #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wjs-tab">
+        <div class="container-fluid">
+            <div class="row">
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#home" data-toggle="tab">特别推荐</a>
+                        </li>
+                        <li>
+                            <a href="#profile" data-toggle="tab">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#messages" data-toggle="tab">Messages</a>
+                        </li>
+                        <li>
+                            <a href="#settings" data-toggle="tab">Settings</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="item">
+                                            <div class="item-left"></div>
+                                            <div class="item-right"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-4"></div>
+                                    <div class="col-lg-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="profile">2</div>
+                        <div class="tab-pane" id="messages">3</div>
+                        <div class="tab-pane" id="settings">4</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jQuery.min.js"></script>
+    <script src="./lib/js/bootstrap.js"></script>
+</body>
+
+</html>

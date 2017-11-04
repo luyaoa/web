@@ -1,0 +1,30 @@
+
+
+/* 应用媒体查询来判别ipone 5  和ipone 6 */
+
+/* 应用media  不同的是用link方式 media是一个属性 但是在一个样式表中 media就是一个关键字 */
+
+
+/* 给iphone5 */
+@media screen and (width: 320px) {
+  body {
+    background-color: hotpink;
+  }
+}
+
+
+
+/* 给iphone6 */
+@media screen and (width: 375px) {
+  body {
+    background-color: green;
+  }
+}
+
+
+/* 
+通过media属性引入:
+      哪个设备写哪个设备的样式  分的比较清晰 维护起来比较清晰 不互相影响 代码比较容易知道  但是代码量太多了且没必要
+通过@media关键字引入:
+       只需要用@media 引入媒体查询中写各种设备不同之处 相同只需要写一遍
+*/

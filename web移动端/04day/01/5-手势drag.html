@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #F7F7F7;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .box {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 功能 实现移动端手指拖拽
+        // 思路 other图
+        // 步骤：
+        // 1.获取拖动元素
+        var box = document.querySelector(".box");
+        // 2.声明变量
+        var startX, startY, endX, endY, _left, _top;
+        // 3.获取出点开始位置以及元素开始位置
+        box.addEventListener('touchstart', function (e) {
+        
+            var touches = e.targetTouches[0];
+
+
+            startX = touches.clientX;
+            startY = touches.clientY;
+            _left = this.offsetLeft;
+			// 变量不能设置为top
+			_top = this.offsetTop;
+            console.log(top);
+        })
+        // 4.获取出点移动到的位置
+        box.addEventListener('touchmove', function (e) {
+            var touches = e.changedTouches[0];
+
+            endX = touches.clientX;
+            endY = touches.clientY;
+
+            // 5.设置拖动元素
+            this.style.left = _left + (endX - startX)+ 'px';
+            this.style.top = _top + (endY - startY)+ 'px';
+        })
+    </script>
+</body>
+
+</html>

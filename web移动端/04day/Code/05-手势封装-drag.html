@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>触屏事件</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		.box {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box"></div>
+
+	<script>
+		// 功能: 拖拽物体进行移动
+		// 思路: 在other文件夹中的图
+		// 步骤: 
+		// 1.获取拖拽的元素
+		var box = document.querySelector('.box');
+		// 2.声明变量
+		var startX,startY,endX,endY,_left,_top;
+		// 3.获取手指的开始时的做标 元素原始的位置
+		box.addEventListener('touchstart',function(e){
+			var touches = e.targetTouches[0];
+
+			startX = touches.clientX;
+			startY = touches.clientY;
+
+			_left = this.offsetLeft;
+			// 变量不能设置为top
+			_top = this.offsetTop;
+
+  	// console.log(top);
+		})
+		// 4.获取结束时的位置坐标
+		box.addEventListener('touchmove',function(e){
+			var touches = e.changedTouches[0];
+
+			endX = touches.clientX;
+			endY = touches.clientY;
+		// 5.设置当前的位置坐标
+			this.style.left = _left + (endX - startX) + 'px';
+			this.style.top = _top + (endY - startY) + 'px';
+		})
+
+	</script>
+
+	</script>
+</body>
+
+</html>

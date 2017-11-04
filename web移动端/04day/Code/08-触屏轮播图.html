@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>触屏轮播图</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel ul {
+      position: relative;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      /* width: 1000%; */
+      overflow: hidden;
+    }
+
+    .carousel li {
+      float: left;
+      /* width: 10%; */
+    }
+
+    .carousel a {
+      display: block;
+      width: 100%;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel">
+    <ul>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/0.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/1.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/2.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/3.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/4.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/5.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/6.png" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="javascript:;">
+          <img src="./image/7.png" alt="">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // 功能: 触屏轮播图
+    // 步骤: 
+    // 0.获取元素
+    // 0.1 获取carousel元素
+    var carousel = document.querySelector('.carousel');
+    // 0.2 获取ul
+    var ul = carousel.querySelector('ul');
+    // 0.3 获取第一个li 
+    var firstLi = ul.querySelector("li");
+    // 0.4 获取最后一个li 
+    var lastLi = ul.querySelector('li:last-child');
+    // 声明变量
+    var aLi, carouselWidth, index = 0, timer, startX, endX;
+    // 1.把轮播图的布局写好
+    function init() {
+      // 1.1 把第一个li添加到最后一个li后面
+      ul.appendChild(firstLi.cloneNode(true));
+      // 1.2 把最后一个li添加到第一个li前面
+      ul.insertBefore(lastLi.cloneNode(true), firstLi);
+      // 1.3 获取li
+      aLi = document.querySelectorAll('li');
+      // 1.4 设置宽度(ul和li的)
+      setWidth();
+      // 1.5 图片的显示序号有问题 第一个图片显示的应该时0 而不是7 因此作如下调整
+      index--;
+      ul.style.left = index * carouselWidth + 'px';
+
+      // 1.6 让轮播图轮播起来
+      autoplay();
+    }
+
+    function setWidth() {
+      carouselWidth = carousel.offsetWidth;
+      // console.log(carouselWidth);
+      ul.style.width = carouselWidth * aLi.length + 'px';
+
+      for (var i = 0; i < aLi.length; i++) {
+        aLi[i].style.width = carouselWidth + 'px';
+      }
+    }
+
+
+    // 2.让轮播图轮播器来
+    function autoplay() {
+      timer = setInterval(function () {
+        index--;
+
+        ul.style.left = index * carouselWidth + 'px';
+        ul.style.transition = 'all 1s';
+      }, 1500)
+    }
+    // 3.检测索引的变化 调整索引
+    // 3.1 给ul添加transitionEnd事件 当ul过渡完成的时候 去监听
+    ul.addEventListener('webkitTransitionEnd', function () {
+      // console.log(1);
+      // 3.2 判断索引为0 的时候  让其索引为-8;
+      if (index == 0) {
+        index = -8;
+      }
+      // 3.3 判断索引为-9的时候  让其索引为-1;
+      if (index == -9) {
+        index = -1;
+      }
+      // 3.4 让ul的left值发生变化
+      ul.style.left = index * carouselWidth + 'px';
+      // 3.5 去除ul的过渡效果
+      ul.style.transition = '';
+    })
+    // 4.用手指去控制轮播图
+    // 4.1 声明变量 startX,endX
+    // 4.2 给ul添加touchstart事件 获取起始点的X坐标
+    ul.addEventListener('touchstart', function (e) {
+      clearInterval(timer);
+      var touches = e.targetTouches[0];
+
+      startX = touches.clientX;
+    })
+
+    // 4.3 给ul添加touchend事件  后去结束点的X坐标
+    ul.addEventListener('touchend', function (e) {
+      autoplay();
+      var touches = e.changedTouches[0];
+      endX = touches.clientX;
+      // 4.4 判断开始和结束点的坐标的值的大小  如果结束点大于起始点 则为向右滑  否则向左滑
+      // 4.5 控制索引  如果为右滑 索引++ 否则索引--；
+      endX > startX ? index++ : index--;
+      // 4.6 控制ul的left值
+      ul.style.left = index * carouselWidth + 'px';
+      // 4.7 给ul添加过渡效果
+      ul.style.transition = 'all 1s';
+    })
+
+    init();
+  </script>
+</body>
+
+</html>

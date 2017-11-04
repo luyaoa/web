@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- 这个viewport设置 pageX Y 是错误的 -->
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+	<!-- 写全viewport的设置 才能获取到clientX/Y pageX/Y的正确的结果 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<title>触屏事件</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		ul {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			background-color: #CCC;
+
+		}
+
+		li {
+			height: 30px;
+			line-height: 30px;
+			padding: 0 20px;
+		}
+
+		.box {
+
+			width: 1280px;
+			/* width: 100%; */
+			height: 200px;
+			margin: 10px auto;
+			background-color: pink;
+			margin-top: 90px;
+			line-height: 200px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<ul>
+		<li class="client"></li>
+		<li class="page"></li>
+		<li class="screen"></li>
+	</ul>
+	<div class="box"></div>
+
+	<script>
+		// 获取box client page  screen
+		var box = document.querySelector('.box');
+
+		var client = document.querySelector('.client');
+
+		var page = document.querySelector('.page');
+
+		var screen = document.querySelector('.screen');
+
+
+		// 绑定事件 绑定手指触摸屏幕 触发touchstart 
+		box.addEventListener('touchstart', function(e){
+			console.log(e);
+		})
+
+		// 绑定事件  监听手指移动
+		box.addEventListener('touchmove', function (e) {
+			//  获取第一根手指
+			var touch = e.targetTouches[0];
+
+			// 获取clientX/Y坐标
+			client.innerHTML = 'clientX/Y为: ' + Math.floor(touch.clientX) + '/' + Math.floor(touch.clientY);
+
+			// 获取pageX/Y坐标
+			page.innerHTML = 'pageX/Y为: ' + Math.floor(touch.pageX) + '/' + Math.floor(touch.pageY);
+
+			// 获取screenX/Y坐标
+			screen.innerHTML = 'screenX/Y为: ' + Math.floor(touch.screenX) + '/' + Math.floor(touch.screenY);
+
+
+			// 阻止滚动
+			e.preventDefault();
+
+		})
+
+
+		// 综上:
+		//    clientX/Y 获取的是可视区的X/Y坐标(不包含滚动)  推荐使用的   手指只在屏幕尺寸内滑动 所以用它
+		//    pageX/Y   获取的是 触点相对于HTML文档左边沿的X/Y坐标(包含滚动)
+		//    screenX/Y 获取的触点相对于屏幕左边沿的X/Y坐标(不包含滚动)  有兼容性问题所以不用
+
+
+	</script>
+</body>
+
+</html>

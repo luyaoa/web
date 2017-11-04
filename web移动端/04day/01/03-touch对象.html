@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>触屏事件 touch对象 </title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #F7F7F7;
+        }
+
+        ul {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            background-color: #CCC;
+        }
+
+        li {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+        }
+
+        .box {
+
+            width: 1280px;
+            /* width: 100%; */
+            height: 200px;
+            margin: 10px auto;
+            background-color: pink;
+            margin-top: 90px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="client"></li>
+        <li class="page"></li>
+        <li class="screen"></li>
+
+    </ul>
+    <div class="box"></div>
+
+
+
+    <script>
+        // 获取元素
+
+        var box = document.querySelector(".box");
+
+        var client = document.querySelector('.client');
+        var page = document.querySelector('.page');
+        var screen = document.querySelector('.screen');
+
+        // 绑定事件 手指触摸屏幕触发 touchstart 
+
+        box.addEventListener('touchstart', function (e) {
+            console.log(e);
+        })
+        // 绑定事件 监听手指移动
+        box.addEventListener('touchmove', function (e) {
+            // 获取第一根手指
+            var touch = e.targetTouches[0];
+
+
+            // 获取clientX/Y坐标
+            client.innerHTML = 'clientX/Y为: ' + Math.floor(touch.clientX) + '/' + Math.floor(touch.clientY);
+
+            // 获取pageX/Y坐标
+            page.innerHTML = 'pageX/Y为: ' + Math.floor(touch.pageX) + '/' + Math.floor(touch.pageY);
+
+            // 获取screenX/Y坐标
+            screen.innerHTML = 'screenX/Y为: ' + Math.floor(touch.screenX) + '/' + Math.floor(touch.screenY);
+
+
+            // 阻止滚动
+            e.preventDefault();
+
+// 总结： clientX/Y 获取的是可是区域的坐标 （不包括滚轮） 推荐使用 手指只在可是区域的屏幕的尺寸内滑动 所以推荐使用
+    //    pageX/Y 获取的是触点相对于html文档左边的坐标 （包括滚轮）
+    //    screenX/Y 获取的触点相对于屏幕左边的坐标（不包括滚动）  但是有兼容问题 所以不用
+
+
+        })
+    </script>
+
+
+</body>
+
+</html>

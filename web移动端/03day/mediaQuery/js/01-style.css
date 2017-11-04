@@ -1,0 +1,14 @@
+@media screen and (width: 320px) {
+    body {
+      background-color: hotpink;
+    }
+  }
+  
+  
+  
+  /* 给iphone6 */
+  @media screen and (width: 375px) {
+    body {
+      background-color: green;
+    }
+  }

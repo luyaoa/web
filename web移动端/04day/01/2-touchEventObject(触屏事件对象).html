@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+			overflow: hidden;
+		}
+
+		.box {
+			width: 320px;
+			height: 400px;
+			background-color: pink;
+			font-size: 12px;
+			word-break: break-all;
+		}
+	</style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // 获取事件对象box
+        var box = document.querySelector(".box");
+        // 获取事件对象存储的信息
+        box.addEventListener("click",function(e){
+            // console.log(e);
+        });
+        // 添加事件
+        // touches  触屏上触点个数的列表
+        // targetTouches 绑定事件上的元素上触电的个数列表
+        // changedTouches 手指离开的时候触点的个数列表
+
+
+        // 触发touches事件
+        box.addEventListener("touchstart",function(e){
+            console.log(e);
+			this.innerHTML ='touches:'+ e.touches.length + 'targetTouches:' +e.targetTouches.length + 'changedTouches:' + e.changedTouches.length;
+        })
+        box.addEventListener("touchmove",function(e){
+            console.log(e);
+			this.innerHTML ='touches:'+ e.touches.length + 'targetTouches:' +e.targetTouches.length + 'changedTouches:' + e.changedTouches.length;
+        })
+        box.addEventListener("touchend",function(e){
+            console.log(e);
+			this.innerHTML ='touches:'+ e.touches.length + 'targetTouches:' +e.targetTouches.length + 'changedTouches:' + e.changedTouches.length;
+        })
+    </script>
+</body>
+</html>

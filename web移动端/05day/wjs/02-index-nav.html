@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微金所导航条部分</title>
+    <link rel="stylesheet" href="./lib/css/bootstrap.css">
+    <style>
+        .wjs-nav {
+            height: 80px;
+            background-color: #f8f8f8;
+        }
+
+        .navbar-default {
+            border: none;
+        }
+
+        .navbar-nav>li>a {
+            padding: 0 15px;
+            width: 100%;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .navbar-brand {
+            padding: 0;
+            margin-right: 20px;
+            margin-left: 20px;
+            line-height: 80px;
+            /* calc运算时 运算符前后必须要有空格 */
+            padding-top: calc((80px - 55px) / 2);
+        }
+
+        .navbar-toggle {
+            margin-top: calc((80px - 34px) / 2);
+        }
+
+        @media screen and (max-width:767p) {
+            .navbar-nav>li>a {
+                width: 100%;
+                line-height: 40px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wjs-nav">
+        <!-- 布局容器 -->
+        <div class="container">
+
+            <div class="row">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                                aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                <img src="./images/logo.png" alt="">
+                            </a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="#">我要投资
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">我要借贷
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">平台介绍
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">新手专区
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">最新动态
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">微平台
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right hidden-sm">
+                                <li>
+                                    <a href="#">个人中心</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/jQuery.min.js"></script>
+    <script src="./lib/js/bootstrap.min.js"></script>
+</body>
+
+</html>

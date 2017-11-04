@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>swipe手势封装</title>
+</head>
+
+<body>
+  <script>
+    // 功能: swipe手势方向判断--- 上下左右
+    // 思路:  在other文件夹的图中
+    // 步骤: 
+
+    // 1.声明变量
+    var startX,startY,endX,endY,absX,absY;
+    // 2.给document添加touchstart事件---为了获取起始点坐标
+    document.addEventListener('touchstart',function(e){
+      var touches = e.targetTouches[0];
+
+      startX = touches.clientX;
+      startY = touches.clientY;
+    })
+    // 3.给document添加touchend事件 -- 为了获取结束点坐标
+    document.addEventListener('touchend',function(e){
+      var touches = e.changedTouches[0];
+
+      endX = touches.clientX;
+      endY = touches.clientY;
+    // 4. 计算两个点的位置的绝对值
+    absX = Math.abs(endX - startX);
+    absY = Math.abs(endY - startY);
+    // 5.判断水平还是垂直
+    // if( absX > absY ) {
+    //   // 水平
+    // }else {
+    //   // 垂直
+    // }
+
+    if(absX == absY) {
+      return;
+    }
+
+    var direction = absX > absY ? 
+    // '水平' 
+    endX > startX ? '向右' : '向左'
+    :
+    //  '垂直';
+    endY > startY ? '向下' : '向上';
+    console.log(direction);
+    // 6.如果是水平 判断左右
+    // 7.如果是垂直 判断上下
+    })
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>触屏事件</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 320px;
+			height: 400px;
+			margin: 10px auto;
+			background-color: pink;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box"></div>
+
+	<script>
+		// 功能: 封装Tap手势(单击)
+		// 思路: 首先在触摸开始的时候获取起始坐标 在触摸结束的时候获取结束坐标 如果这两个坐标一致(差不多) 代表两个点位置一样 就是点击
+
+		// 步骤: 
+		// 1.获取(Tap)点击的元素
+		var box = document.querySelector('.box');
+		// 2.声明变量
+		var startX, startY, endX, endY,startTime,endTime;
+		// 3.给Tap(点击)的元素添加touchstart事件 为了获取起始点坐标
+		box.addEventListener('touchstart', function (e) {
+			var touches = e.targetTouches[0];
+
+			startX = touches.clientX;
+			startY = touches.clientY;
+
+			// 在此获取一个开始时间
+			startTime = new Date().getTime();
+		})
+		// 4. 给Tap(点击)的元素添加touchend事件  为了获取结束点坐标
+		box.addEventListener('touchend', function (e) {
+			
+			endTime = new Date().getTime();
+
+			// console.log(endTime- startTime);//经过测试 大概用户手指点击 时间在300ms以内
+
+			var touches = e.changedTouches[0];
+			endX = touches.clientX;
+			endY = touches.clientY;
+
+
+			// console.time()  给控制台添加了一个定时器
+			console.time("timer"); //启动了一个计时开始
+			// 5. 判断起始点的坐标和终止点的坐标的差值是否小于5 如果小于则为点击 
+			if (Math.abs(endX - startX) < 5 && Math.abs(endY - startY) < 5 && (endTime- startTime) < 300) {
+				console.log("Tap手势触发了!!!");
+			}
+		})
+
+
+
+		// 为了验证click事件在移动端有200-300ms延迟 因此 给box添加一个click事件
+		box.addEventListener('click',function(){
+
+			console.timeEnd("timer");
+			console.log('click事件触发啦');
+		})
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>轮播图</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel ul {
+      position: relative;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      /* width: 1000%; */
+      overflow: hidden;
+    }
+
+    .carousel li {
+      float: left;
+      /* width: 10%; */
+    }
+
+    .carousel a {
+      display: block;
+      width: 100%;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel">
+    <ul>
+      <li><a href="javascript:;"><img src="./image/0.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/1.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/2.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/3.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/4.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/5.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/6.png" alt=""></a></li>
+      <li><a href="javascript:;"><img src="./image/7.png" alt=""></a></li>
+    </ul>
+  </div>
+  <script>
+    // 思路：
+    /* 移动端的轮播图跟PC端的几乎一样 唯一不一样的是移动端的需要
+        将第一和最后一张分别放在最后一张后面和第一张前面 目的都
+        是一样的
+         */
+
+    //  1.获取元素
+    //  1.1 获取轮播carousel元素
+    var carousel = document.querySelector(".carousel");
+    //  1.2 获取ul
+    var ul = carousel.querySelector("ul");
+    //  1.3 获取第一个li
+    var firstLi = ul.querySelector("li");
+    //  1.4 获取最后一个li
+    var lastLi = ul.querySelector("li:last-child");
+
+    // 1.5.声明变量
+    var aLi, carouselWidth, index = 0, timer, startX, endX;
+
+    // 2.初始化页面 （布局）
+    function init() {
+      // 2.1 将第一个li放在最后一个li后面
+      ul.appendChild(firstLi.cloneNode(true));
+      // 2.2 将最后一个li放在第一个li前面
+      ul.insertBefore(lastLi.cloneNode(true), firstLi);
+      // 2.3 获取全部的li
+      aLi = document.querySelectorAll("li");
+      // 2.4 设置ul以及li的宽 (封装函数 这里调用)
+      setWidth();
+      // 2.5 在页面中显示的第一张图片应该是原来的第一个li 而不是添加过后的最后一个li
+      index--;
+      ul.style.left = index * carouselWidth + "px";
+      // 2.6 让图片动起来(封装函数 调用)
+      autoplay();
+    }
+
+    // 封装的两个函数
+    function setWidth() {
+      carouselWidth = carousel.offsetWidth;
+      // console.log(carouselWidth);
+      ul.style.width = carouselWidth * aLi.length + 'px';
+
+      for (var i = 0; i < aLi.length; i++) {
+        aLi[i].style.width = carouselWidth + 'px';
+      }
+    }
+
+
+
+
+    // 2.让图片动起来
+    function autoplay() {
+      timer = setInterval(function () {
+        index--;
+
+        ul.style.left = index * carouselWidth + 'px';
+        ul.style.transition = 'all 1s';
+      }, 1500)
+    }
+
+
+
+
+    // 3.用transitionEnd事件监听索引
+    // 3.1 给ul添加transitionEnd事件 当ul过渡完成的时候去监听
+
+ 
+    ul.addEventListener("webkitTransitionEnd", function () {
+      // 3.2 判断 如果索引为0的 重新赋值为-8  如果索引为-9 重新赋值为-1
+      if (index == 0) {
+        index == -8;
+      }
+      if (index == -9) {
+        index = -1;
+      }
+      // 3.3 让ul的left发生变化
+      ul.style.left = index * carouselWidth + "px";
+      // 3.4 去除这里的ul过渡
+      ul.style.transition = '';
+    })
+
+    // 4.用手指控制轮播图的方向
+    // 4.1 声明变量（触屏的起始位置）
+    // 4.2 添加touchstart方法 获取开起点的x坐标
+    ul.addEventListener('touchstart', function (e) {
+      clearInterval(timer);
+      var touches = e.targetTouches[0];
+
+      startX = touches.clientX;
+    })
+    // 4.3 添加touchend方法 获取结束点的x坐标
+    ul.addEventListener('touchend', function (e) {
+      autoplay();
+      var touches = e.changedTouches[0];
+      endX = touches.clientX;
+      // 4.4 判断开始和结束点的坐标的值的大小  如果结束点大于起始点 则为向右滑  否则向左滑
+      // 4.5 控制索引  如果为右滑 索引++ 否则索引--；
+      endX > startX ? index++ : index--;
+      // 4.6 控制ul的left值
+      ul.style.left = index * carouselWidth + 'px';
+      // 4.7 给ul添加过渡效果
+      ul.style.transition = 'all 1s';
+    })
+
+    init();
+  </script>
+</body>
+
+</html>

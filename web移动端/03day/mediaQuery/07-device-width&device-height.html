@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>媒体查询</title>
+	<style>
+	
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		/* 演示 device-width / device-height  这两个值是从 chrome浏览器的移动模拟器中拿到的值
+		*/
+		/* @media screen and (device-width:375px){
+			body{
+				background-color: pink;
+			}
+		} */
+		@media screen and (device-height:667px){
+			body{
+				background-color: pink;
+			}
+		}
+	</style>
+</head>
+<body>
+	<p>完全等于宽/高时，才会变成蓝色</p>
+</body>
+</html>

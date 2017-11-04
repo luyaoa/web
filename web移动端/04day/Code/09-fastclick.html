@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>点透例子</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			width: 320px;
+			height: 320px;
+			margin: 100px auto;
+			position: relative;
+		}
+
+		.tap {
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			font-size: 30px;
+			margin: -100px 0 0 -100px;
+
+			background-color: red;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+
+		.click {
+			width: 300px;
+			height: 300px;
+			text-align: center;
+			line-height: 300px;
+			font-size: 30px;
+			margin: -150px 0 0 -150px;
+
+			background-color: pink;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="box">
+		<div class="click">click</div>
+		<div class="tap">tap</div>
+	</div>
+
+
+	<!-- 引入zepto.js -->
+	<script src="./js/zepto.js"></script>
+	<script src="./js/fastclick.js"></script>
+	<script>
+
+		// 什么叫点透
+
+		// 你可能碰到过在列表页面上创建一个弹出层，弹出层有个关闭的按钮，
+		// 你点了这个按钮关闭弹出层后后，这个按钮正下方的内容也会执行点击事件（或打开链接）。
+		// 这个被定义为这是一个“点透”现象。
+		FastClick.attach(document.body);
+
+		$('.tap').tap(function(){
+			$(this).hide();
+			console.log('tap事件触发啦');
+			
+		})
+
+		$('.click').click(function(){
+			console.log('click事件触发啦!');
+		})
+
+
+		// 解决方案: 
+		// 2.使用fastclick插件
+	</script>
+</body>
+
+</html>
